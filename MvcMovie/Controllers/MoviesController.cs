@@ -28,12 +28,12 @@ public class MoviesController : Controller
         var movies = from m in _context.Movie
             select m;
 
-        if (!string.IsNullOrEmpty(searchString))
+        if (!string.IsNullOrWhiteSpace(searchString))
         {
             movies = movies.Where(s => s.Title!.ToUpper().Contains(searchString.ToUpper()));
         }
 
-        if (!string.IsNullOrEmpty(movieGenre))
+        if (!string.IsNullOrWhiteSpace(movieGenre))
         {
             movies = movies.Where(x => x.Genre == movieGenre);
         }
